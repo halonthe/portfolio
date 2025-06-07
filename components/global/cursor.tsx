@@ -12,7 +12,7 @@ interface Cursor {
 
 export default function Cursor({color='white',size = 30, centeredCircle = true, isHovered}: Cursor) {
 
-	const circleSize = isHovered ? size * 10 : size;
+	const circleSize = isHovered ? size * 5 : size;
 
 	const circle = useRef(null)
 	const mouse = useRef({x:0,y:0})
@@ -55,7 +55,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 	}, [])
 
 	return (
-		<div className={"fixed top-0 left-0 bg-white rounded-full mix-blend-difference pointer-events-none"}
+		<div className={`fixed top-0 left-0 rounded-full ${isHovered && "mix-blend-difference"} pointer-events-none z-50`}
 		style={{
 			backgroundColor: color,
 			width: circleSize,
