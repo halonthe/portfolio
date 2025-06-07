@@ -55,7 +55,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 	}, [])
 
 	return (
-		<div className={`fixed top-0 left-0 rounded-full ${isHovered && "mix-blend-difference"} pointer-events-none z-50`}
+		<div className={`fixed top-0 left-0 rounded-full ${isHovered && "mix-blend-difference"} pointer-events-none z-40`}
 		style={{
 			backgroundColor: color,
 			width: circleSize,

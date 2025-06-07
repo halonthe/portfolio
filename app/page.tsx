@@ -17,9 +17,9 @@ export default function Home() {
                 </p>
                 <p className="text-xl md:text-3xl xl:text-4xl font-bold">
                     I think people should look at the bigger picture when they
-                    <span className="text-blue-900 bg-yellow-300" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+                    <span className="text-blue-900 bg-yellow-300 ml-1" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
                         build something
-                    </span>.
+                    </span>.<br/>
                     I like working in groups where everyone can voice their opinions and ideas.
                 </p>
             </div>
