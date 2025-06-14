@@ -1,11 +1,10 @@
 'use client'
 
 import useCursorStore from "@/lib/zustand/cursor";
-import Cursor from "@/components/global/cursor";
 import Revealer from "@/components/animation/revealer";
 
 export default function Home() {
-    const {isHovered, setHovered} = useCursorStore()
+    const { setHovered} = useCursorStore()
 
   return (
       <>

@@ -4,7 +4,6 @@ import "./globals.css";
 import {ViewTransitions} from "next-view-transitions";
 import Header from "@/components/global/header";
 import React from "react";
-import Cursor from "@/components/global/cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
