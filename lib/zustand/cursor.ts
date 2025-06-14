@@ -6,7 +6,7 @@ interface CursorState {
 }
 
 const useCursorStore = create<CursorState>()((set) => ({
-	isHovered: true,
+	isHovered: false,
 	setHovered: (newState) => set({ isHovered: newState }),
 }));
 

@@ -25,7 +25,6 @@ export default function Home() {
                     </p>
                 </div>
             </section>
-            <Cursor isHovered={isHovered} color={"#003366"}/>
       </>
   );
 }

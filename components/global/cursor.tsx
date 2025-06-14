@@ -28,6 +28,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 	const lerp = (x: any,y: any,a: any) => x * (1 - a) + y * a
 
 	const moveCircle = (x: any,y: any) => {
+		if (!circle.current) return;
 		const vars = {
 			x,
 			y,
@@ -38,6 +39,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 	}
 
 	const animate = () => {
+		if (!circle.current) return;
 		const {x,y} = delayedMouse.current;
 		delayedMouse.current = {
 			x: lerp(x, mouse.current.x, 0.05),
@@ -55,7 +57,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 	}, [])
 
 	return (
-		<div className={`fixed top-0 left-0 rounded-full ${isHovered && "mix-blend-difference"} pointer-events-none z-40`}
+		<div className={`fixed top-0 left-0 rounded-full mix-blend-difference pointer-events-none z-40`}
 		style={{
 			backgroundColor: color,
 			width: circleSize,

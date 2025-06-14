@@ -6,33 +6,36 @@ import {usePathname} from "next/navigation";
 import useCursorStore from "@/lib/zustand/cursor";
 import {NavLink} from "@/constants";
 import {useTransitionRouter} from "next-view-transitions";
+import Cursor from "@/components/global/cursor";
+import {usePageTransition} from "@/hooks/usePageTransition";
 
 
 export default function Header() {
-	const {setHovered} = useCursorStore()
+	const {isHovered,setHovered} = useCursorStore()
 
 	const router = useTransitionRouter()
 	const pathname = usePathname()
 
 	const handleNavigation = (path: any) => (e: any) => {
-		if(path === pathname){
-			e.preventDefault()
-			return
-		}
+		e.preventDefault()
+
+		if(path === pathname) return
 
 		router.push(path, {
-			onTransitionReady: triggerPageTransition,
+			onTransitionReady: usePageTransition,
 		})
 	}
 
 	return (
 		<>
-		<header className="absolute top-0 left-0 flex items-center justify-between w-full bg-transparent p-10 md:px-20 z-40">
+		<header className="fixed top-0 left-0 flex items-center justify-between w-full bg-transparent p-10 md:px-20 z-40">
 			<h1 className="flex items-center justify-between">
 				<sup className="font-normal font-mono text-yellow-300">01.</sup>
 				<Link href="/" className="text-3xl font-bold relative inline-block after:block after:h-1 after:bg-blue-900 after:transition-transform after:duration-300 after:delay-150 after:scale-x-0 hover:after:scale-x-100 after:origin-left"
 					  onMouseEnter={() => setHovered(true)}
-					  onMouseLeave={() => setHovered(false)}>
+					  onMouseLeave={() => setHovered(false)}
+					  onClick={handleNavigation("/")}
+				>
 					Restika
 				</Link>
 			</h1>
@@ -57,19 +60,7 @@ export default function Header() {
 			</ul>
 
 		</header>
+			<Cursor isHovered={isHovered}/>
 		</>
 	)
-}
-
-function triggerPageTransition(){
-
-	document.documentElement.animate([
-		{clipPath: "polygon(25% 75%,75% 75%,75% 75%,25% 75%"},
-		{clipPath: "polygon(0% 100%,100% 100%,100% 0%,0% 0%"}
-
-	],{
-		duration: 2000,
-		easing: "cubic-bezier(0.9, 0, 0.1, 1)",
-		pseudoElement: "::view-transition-new(root)"
-	})
 }

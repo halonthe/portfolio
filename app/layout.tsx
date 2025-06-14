@@ -4,6 +4,7 @@ import "./globals.css";
 import {ViewTransitions} from "next-view-transitions";
 import Header from "@/components/global/header";
 import React from "react";
+import Cursor from "@/components/global/cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,14 +26,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
       <ViewTransitions>
         <html lang="en">
           <body
-            className={`${geistSans.variable} ${geistMono.variable} text-slate-50 antialiased`}
+            className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] text-slate-50 antialiased`}
           >
           <Header/>
-          <main className="font-[family-name:var(--font-geist-sans)] w-screen min-h-screen relative">
+          <main className="w-screen min-h-screen relative">
             {children}
           </main>
           </body>
