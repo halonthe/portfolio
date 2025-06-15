@@ -13,7 +13,7 @@ export default function Home() {
                 <div className="absolute bottom-0 left-0 px-20 pb-40 w-1/2">
                     <p className="line-clamp-1">
                         <span className="font-[family-name:var(--font-geist-mono)] text-yellow-300"><sup>01.</sup> Hello - </span>
-                        my name is Yuda Dwi Restika. I'm a fullstack web developer.
+                        my name is Yuda Dwi Restika. I&apos;m a fullstack web developer.
                     </p>
                     <p className="text-xl md:text-3xl xl:text-4xl font-bold">
                         I think people should look at the bigger picture when they

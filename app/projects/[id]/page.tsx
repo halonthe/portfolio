@@ -1,8 +1,9 @@
-// 'use client'
+
 import Image from "next/image";
 import Revealer from "@/components/animation/revealer";
 import {ProjectList} from "@/constants";
 import {notFound} from "next/navigation";
+import PixelBackground from "@/components/animation/pixel-background";
 
 interface Props {
 	params: Promise<{ id: string }>
@@ -18,6 +19,7 @@ export default async function ProjectDetailPage({params}: Props) {
 	return(
 		<>
 			<Revealer/>
+			<PixelBackground color={"#50AFC3"}/>
 			<section className={"w-screen h-full flex flex-col items-center justify-center text-[#02DFB6] bg-[#040737] px-5"}>
 
 				<div className={"w-full flex items-center justify-center border-b border-[#02DFB6]/30 mt-10 py-20"}>

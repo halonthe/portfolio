@@ -7,8 +7,11 @@ import {ProjectList} from "@/constants";
 import FadeInOnScroll from "@/components/project/fadeIn-on-scroll";
 import Link from "next/link";
 import AllProjects from "@/components/project/all-project";
+import usePixelBgStore from "@/lib/zustand/pixel-background";
 
 export default function AboutPage(){
+	const {setPixeled} = usePixelBgStore()
+
 	const projectTotal = ProjectList.length
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [showProjects, setShowProjects] = useState(false);
@@ -18,7 +21,7 @@ export default function AboutPage(){
 	const isOpen = useRef(false);
 
 	useEffect(() => {
-		const handleScroll = (e: any) => {
+		const handleScroll = (e: WheelEvent) => {
 			if (isScrolling.current) return;
 
 			if (isOpen.current) return;
@@ -73,7 +76,9 @@ export default function AboutPage(){
 
 								<div className={"min-w-[330px] flex item-center"}>
 									<FadeInOnScroll>
-									<Link href={project.link.page}>
+										<Link href={project.link.page} onClick={() => {
+											setPixeled(true)
+										}}>
 										<Image
 											src={project.image.thumbnail}
 											alt={project.name}
@@ -89,7 +94,11 @@ export default function AboutPage(){
 								<div className={"mt-5 min-w-[330px] flex flex-col md:flex-row md:items-end justify-between"}>
 									<FadeInOnScroll delay={0.4}>
 										<h1 className={"text-4xl font-bold"}>
-											<Link href={project.link.page}>{project.name}<sup className={"text-sm font-normal align-text-top text-yellow-300"}>[&#10532;]</sup></Link>
+											<Link href={project.link.page} onClick={() => {
+												setPixeled(true)
+											}}>
+												{project.name}<sup className={"text-sm font-normal align-text-top text-yellow-300"}>[&#10532;]</sup>
+											</Link>
 										</h1>
 									</FadeInOnScroll>
 									<FadeInOnScroll delay={1}>

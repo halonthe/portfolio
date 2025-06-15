@@ -8,6 +8,7 @@ import {NavLink} from "@/constants";
 import {useTransitionRouter} from "next-view-transitions";
 import Cursor from "@/components/global/cursor";
 import {usePageTransition} from "@/hooks/usePageTransition";
+import React from "react";
 
 
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
 	const router = useTransitionRouter()
 	const pathname = usePathname()
 
-	const handleNavigation = (path: any) => (e: any) => {
+	const handleNavigation = (path: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
 		e.preventDefault()
 
 		if(path === pathname) return

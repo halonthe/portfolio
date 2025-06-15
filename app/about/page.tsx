@@ -25,7 +25,7 @@ export default function AboutPage(){
 							<div>
 								<span className={"font-bold text-yellow-300"}>Basics & Languages</span>
 								<ul>
-									{my.skills.language.map((item: any, index: number) => (
+									{my.skills.language.map((item: string, index: number) => (
 										<li key={index}>
 											{item}
 										</li>
@@ -36,7 +36,7 @@ export default function AboutPage(){
 							<div>
 								<span className={"font-bold text-yellow-300"}>Frameworks & Library</span>
 								<ul>
-									{my.skills.framework.map((item: any, index: number) => (
+									{my.skills.framework.map((item: string, index: number) => (
 										<li key={index}>
 											{item}
 										</li>
@@ -47,7 +47,7 @@ export default function AboutPage(){
 							<div>
 								<span className={"font-bold text-yellow-300"}>Tools & Others</span>
 								<ul>
-									{my.skills.tools.map((item: any, index: number) => (
+									{my.skills.tools.map((item: string, index: number) => (
 										<li key={index}>
 											{item}
 										</li>

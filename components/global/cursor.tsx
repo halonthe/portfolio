@@ -7,7 +7,7 @@ interface Cursor {
 	size?: number;
 	color?: string;
 	centeredCircle?: boolean;
-	isHovered?: any;
+	isHovered?: boolean;
 }
 
 export default function Cursor({color='white',size = 30, centeredCircle = true, isHovered}: Cursor) {
@@ -25,9 +25,9 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 		moveCircle(mouse.current.x, mouse.current.y);
 	}
 
-	const lerp = (x: any,y: any,a: any) => x * (1 - a) + y * a
+	const lerp = (x: number,y: number,a: number) => x * (1 - a) + y * a
 
-	const moveCircle = (x: any,y: any) => {
+	const moveCircle = (x: number,y: number) => {
 		if (!circle.current) return;
 		const vars = {
 			x,
@@ -54,7 +54,7 @@ export default function Cursor({color='white',size = 30, centeredCircle = true, 
 		animate();
 		window.addEventListener("mousemove", manageMouseMove)
 		return () => window.removeEventListener("mousemove", manageMouseMove)
-	}, [])
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div className={`fixed top-0 left-0 rounded-full mix-blend-difference pointer-events-none z-40`}
