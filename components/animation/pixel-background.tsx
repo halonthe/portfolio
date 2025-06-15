@@ -82,9 +82,7 @@ export default function PixelBackground({color = 'white'}: PixelBackground) {
 					initial="initial"
 					animate={isPixeled ? "open" : "close"}
 					custom={randomDelay}
-				>
-
-				</motion.div>
+				/>
 			)
 		})
 	}
