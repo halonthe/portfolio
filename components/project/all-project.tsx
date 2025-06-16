@@ -1,15 +1,17 @@
 'use client'
 import Revealer from "@/components/animation/revealer";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {ProjectList} from "@/constants";
 
 
 export default function AllProjects() {
+	const ref = useRef<HTMLDivElement | null>(null);
 	const [thumbnail, setThumbnail] = useState<string | null>(null)
 
 	useEffect(() => {
+		ref.current?.scrollIntoView({ behavior: "smooth" });
 		document.body.style.overflow = 'hidden';
 		return () => {
 			document.body.style.overflow = '';
@@ -19,7 +21,7 @@ export default function AllProjects() {
 	return (
 		<>
 			<Revealer/>
-			<section className={"absolute top-0 left-0 w-full min-h-screen bg-gray-600 pt-30 px-10"}>
+			<section ref={ref} className={"absolute top-0 left-0 w-full min-h-screen bg-[url('/images/bg-sky.png')] pt-30 px-10"}>
 				<div className={"w-full h-full relative"}>
 					<h1 className={"font-bold border-b"}><sup className={"mr-1 text-yellow-300 font-mono"}>03.</sup>PROJECTS</h1>
 					{ProjectList.map((project) => (

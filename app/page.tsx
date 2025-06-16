@@ -2,14 +2,31 @@
 
 import useCursorStore from "@/lib/zustand/cursor";
 import Revealer from "@/components/animation/revealer";
+import {useEffect, useRef} from "react";
 
 export default function Home() {
     const { setHovered} = useCursorStore()
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.playbackRate = 0.5; // 0.5x speed = slow motion
+        }
+    }, []);
 
   return (
       <>
           <Revealer/>
-            <section className="bg-[url(/images/bg-sky.png)] bg-cover bg-center min-h-screen">
+            <section className="bg-cover bg-center min-h-screen">
+                <video
+                    ref={videoRef}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={"absolute top-0 left-0 w-screen h-screen object-cover scale-x-[-1]"}>
+                    <source src={"/videos/sky.mp4"} type="video/mp4" className={"w-full h-full"}/>
+                </video>
                 <div className="absolute bottom-0 left-0 px-20 pb-40 w-1/2">
                     <p className="line-clamp-1">
                         <span className="font-[family-name:var(--font-geist-mono)] text-yellow-300"><sup>01.</sup> Hello - </span>

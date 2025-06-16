@@ -4,7 +4,7 @@ export default function ContactPage() {
 	return(
 		<>
 		<Revealer/>
-			<section className={"w-screen h-screen relative flex items-center justify-center bg-[#111214] p-20"}>
+			<section className={"w-screen h-screen relative flex items-center justify-center bg-[#1B1B32] p-20"}>
 			<div className={"w-3/4 h-3/4 border-b border-t border-yellow-300 py-5 flex flex-col justify-between"}>
 				<div className={"w-full flex justify-between font-mono pointer-events-none"}>
 					<div>ADDRESS</div>

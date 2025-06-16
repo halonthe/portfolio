@@ -11,7 +11,7 @@ export default function AboutPage(){
 	return (
 		<>
 			<Revealer/>
-			<section className="w-screen min-h-screen relative bg-black p-20">
+			<section className="w-screen min-h-screen relative bg-[#1B1B32] p-20">
 				<div className={"w-full flex justify-between items-center gap-5 mt-40"}>
 					<div className={"flex flex-col text-8xl font-extrabold pointer-events-none"}>
 						<span>FULLSTACK</span>
