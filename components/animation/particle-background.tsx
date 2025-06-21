@@ -157,7 +157,7 @@ export default function ParticleBackground({
 			}
 			window.removeEventListener('resize', handleResize)
 		}
-	}, [canvasSize.w, canvasSize.h])
+	}, [canvasSize.w, canvasSize.h]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div
