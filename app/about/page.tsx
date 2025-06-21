@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Revealer from "@/components/animation/revealer";
 import {AboutMe} from "@/constants";
+import {FlipWords} from "@/components/animation/flip-word";
+import ParticleBackground from "@/components/animation/particle-background";
 
 export default function AboutPage(){
 
@@ -11,12 +13,13 @@ export default function AboutPage(){
 	return (
 		<>
 			<Revealer/>
-			<section className="w-screen min-h-screen relative bg-[#1B1B32] p-20">
-				<div className={"w-full flex justify-between items-center gap-5 mt-40"}>
-					<div className={"flex flex-col text-8xl font-extrabold pointer-events-none"}>
-						<span>FULLSTACK</span>
-						<span className={"text-yellow-300"}>WEB</span>
-						<span>DEVELOPER.</span>
+			<ParticleBackground/>
+			<section className="w-full min-h-screen relative p-20 overflow-x-hidden">
+				<div className={"w-full flex flex-col xl:flex-row justify-between items-center gap-5 mt-40"}>
+					<div className={"flex flex-col text-7xl md:text-8xl font-extrabold pointer-events-none"}>
+						<FlipWords words={["YUDHA", "FULLSTACK"]}/>
+						<FlipWords words={["DWI", "WEB"]} className={"text-yellow-300"}/>
+						<FlipWords words={["RESTIKA.", "DEVELOPER."]}/>
 					</div>
 
 					<div className={"flex flex-col gap-10 pointer-events-none"}>
@@ -58,14 +61,14 @@ export default function AboutPage(){
 					</div>
 				</div>
 
-				<div className={"w-full flex justify-around mt-40 gap-10"}>
-					<div className={"min-w-[400px] h-[450px] bg-white"}>
-						<Image src={my.photo} alt={"photo"} width={400} height={400} className={"w-full h-full object-cover"} priority/>
+				<div className={"w-full flex flex-col xl:flex-row justify-around mt-40 gap-10"}>
+					<div className={"min-w-[400px] h-[450px]"}>
+						<Image src={my.photo} alt={"photo"} width={400} height={400} className={"w-full h-full object-cover object-center"} priority/>
 					</div>
 
-					<div className={"max-w-1/2 flex flex-col gap-10"}>
-						<p className={"text-3xl font-bold text-justify"}>{my.role}</p>
-						<div className={"flex w-3/4 justify-between gap-10"}>
+					<div className={"w-full xl:max-w-1/2 flex flex-col gap-10"}>
+						<p className={"text-3xl text-yellow-300 font-bold text-justify"}>{my.role}</p>
+						<div className={"flex w-full xl:w-3/4 justify-between gap-10"}>
 							<div className={"hidden lg:block"}>
 								<sup className={"font-mono text-yellow-300"}>02.</sup>ABOUT
 							</div>

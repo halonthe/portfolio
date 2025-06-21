@@ -19,7 +19,7 @@ export default async function ProjectDetailPage({params}: Props) {
 	return(
 		<>
 			<Revealer/>
-			<PixelBackground color={"#1B1B32"}/>
+			<PixelBackground/>
 			<section className={"w-screen h-full flex flex-col items-center justify-center text-[#02DFB6] bg-[#040737] px-5"}>
 
 				<div className={"w-full flex items-center justify-center border-b border-[#02DFB6]/30 mt-10 py-20"}>

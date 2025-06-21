@@ -8,11 +8,23 @@ import {NavLink} from "@/constants";
 import {useTransitionRouter} from "next-view-transitions";
 import Cursor from "@/components/global/cursor";
 import {usePageTransition} from "@/hooks/usePageTransition";
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 
 export default function Header() {
 	const {isHovered,setHovered} = useCursorStore()
+	const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+	useEffect(() => {
+		const checkMobile = () => {
+			setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+		};
+
+		checkMobile();
+		window.addEventListener('resize', checkMobile);
+
+		return () => window.removeEventListener('resize', checkMobile);
+	},[])
 
 	const router = useTransitionRouter()
 	const pathname = usePathname()
@@ -41,7 +53,7 @@ export default function Header() {
 				</Link>
 			</h1>
 
-			<ul className="flex items-center gap-10">
+			<ul className="flex items-center gap-2 md:gap-10">
 				{NavLink.map((nav, index) => {
 					const active = nav.link === pathname || (pathname.startsWith(nav.link) && nav.link !== "/");
 					return (
@@ -50,7 +62,7 @@ export default function Header() {
 							<Link
 								href={nav.link}
 								onClick={handleNavigation(nav.link)}
-								className={`text-xl font-medium relative inline-block after:block after:h-1 after:bg-blue-900 after:transition-transform after:duration-300 after:delay-150 ${active ? "after:scale-x-100" : "after:scale-x-0"} hover:after:scale-x-100 after:origin-left`}
+								className={`text-md md:text-xl font-medium relative inline-block after:block after:h-1 after:bg-blue-900 after:transition-transform after:duration-300 after:delay-150 ${active ? "after:scale-x-100" : "after:scale-x-0"} hover:after:scale-x-100 after:origin-left`}
 								  onMouseEnter={() => setHovered(true)}
 								  onMouseLeave={() => setHovered(false)}>
 								{nav.name}
@@ -61,7 +73,7 @@ export default function Header() {
 			</ul>
 
 		</header>
-			<Cursor isHovered={isHovered}/>
+			{!isMobile && <Cursor isHovered={isHovered}/>}
 		</>
 	)
 }
