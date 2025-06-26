@@ -5,7 +5,7 @@ export default function ContactPage() {
 	return(
 		<>
 		<Revealer/>
-			<ParticleBackground/>
+			<ParticleBackground quantity={250}/>
 			<section className={"w-screen h-screen relative flex items-center justify-center  p-20"}>
 			<div className={"w-3/4 h-3/4 border-b border-t border-yellow-300 py-5 flex flex-col justify-between"}>
 				<div className={"w-full flex justify-between font-mono pointer-events-none"}>
@@ -22,8 +22,8 @@ export default function ContactPage() {
 				<div className={"w-full flex justify-between font-mono items-end"}>
 					<div className={"pointer-events-none"}>SOCIAL</div>
 					<div className={"text-right flex gap-1"}>
-						<a href={"https://github.com/halonthe"} className={"underline cursor-pointer"}>GITHUB<span className={"text-yellow-300"}>&#8663;</span></a>
-						<a href={"https://github.com/halonthe"} className={"underline cursor-pointer"}>LINKEDIN<span className={"text-yellow-300"}>&#8663;</span></a>
+						<a target={"_blank"} href={"https://github.com/halonthe"} className={"underline cursor-pointer"}>GITHUB<span className={"text-yellow-300"}>&#8663;</span></a>
+						<a target={"_blank"} href={"https://www.linkedin.com/in/yudhadr/"} className={"underline cursor-pointer"}>LINKEDIN<span className={"text-yellow-300"}>&#8663;</span></a>
 					</div>
 				</div>
 			</div>

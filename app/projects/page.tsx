@@ -1,13 +1,15 @@
 'use client'
 
 import Image from "next/image";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Revealer from "@/components/animation/revealer";
 import {ProjectList} from "@/constants";
 import FadeInOnScroll from "@/components/project/fadeIn-on-scroll";
 import Link from "next/link";
 import AllProjects from "@/components/project/all-project";
 import usePixelBgStore from "@/lib/zustand/pixel-background";
+import {Border} from "@/components/animation/moving-border";
+import ParticleBackground from "@/components/animation/particle-background";
 
 export default function AboutPage(){
 	const {setPixeled} = usePixelBgStore()
@@ -51,6 +53,7 @@ export default function AboutPage(){
 	return (
 		<>
 			<Revealer/>
+			<ParticleBackground quantity={250}/>
 			<section className="w-screen min-h-screen relative">
 				{ProjectList.map((project, index) => (
 
@@ -59,34 +62,25 @@ export default function AboutPage(){
 							 if (el) {sectionsRef.current[index] = el;}
 						 }}
 						 className={"relative overflow-hidden w-screen h-screen"}>
-						<div className={"absolute top-0 left-0 w-full h-full"}>
-							<div className={"absolute top-0 left-0 w-full h-full"}>
-								<Image
-									src={project.image.bg}
-									alt={project.name}
-									width={1920}
-									height={1080}
-									className={"w-full h-screen object-cover"}
-									priority
-								/>
-							</div>
-							<div className={"absolute top-0 left-0 w-full h-full backdrop-blur-sm"}/>
+						<div className={"absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center"}>
 
-							<div className={"absolute top-1/2 left-1/2 -translate-1/2 w-1/4 h-1/2"}>
-
+							<div className={"p-10"}>
 								<div className={"min-w-[330px] flex item-center"}>
 									<FadeInOnScroll>
 										<Link href={project.link.page} onClick={() => {
 											setPixeled(true)
 										}}>
+											<Border duration={6000}>
+
 										<Image
 											src={project.image.thumbnail}
 											alt={project.name}
 											width={500}
 											height={500}
-											className={"w-full h-full object-cover"}
+											className={"w-full h-full object-cover shadow-[-9px_5px_18px_8px_rgba(255,_255,_255,_0.3)]"}
 											priority
 										/>
+											</Border>
 									</Link>
 									</FadeInOnScroll>
 								</div>

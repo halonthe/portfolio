@@ -33,7 +33,7 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] text-slate-50 antialiased`}
           >
           <Header/>
-          <main className="w-screen min-h-screen relative">
+          <main className="w-screen h-full relative">
             {children}
           </main>
           </body>

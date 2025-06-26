@@ -17,16 +17,12 @@ interface Circle {
 interface Props {
 	quantity?: number
 	size?: number
+	color?: "white" | "black"
 	vx?: number
 	vy?: number
 }
 
-export default function ParticleBackground({
-											   quantity = 500,
-											   size = 0.4,
-											   vx = 0,
-											   vy = 0,
-										   }: Props) {
+export default function ParticleBackground({quantity = 500, size = 0.4, color = "white", vx = 0, vy = 0,}: Props) {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null)
 	const containerRef = useRef<HTMLDivElement | null>(null)
 	const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
@@ -59,7 +55,7 @@ export default function ParticleBackground({
 		ctx.translate(circle.translateX, circle.translateY)
 		ctx.beginPath()
 		ctx.arc(circle.x, circle.y, circle.size, 0, Math.PI * 2)
-		ctx.fillStyle = `rgba(255, 255, 255, ${circle.alpha})`
+		ctx.fillStyle = color === "white" ? `rgba(255, 255, 255, ${circle.alpha})` : `rgba(0, 0, 0, ${circle.alpha})`
 		ctx.fill()
 		ctx.restore()
 
@@ -162,10 +158,10 @@ export default function ParticleBackground({
 	return (
 		<div
 			ref={containerRef}
-			className="pointer-events-none absolute top-0 left-0 h-full w-full bg-[#1B1B32]"
+			className="pointer-events-none absolute top-0 left-0 h-full w-full bg-black -z-10"
 			aria-hidden="true"
 		>
-			<canvas ref={canvasRef} className="w-full h-full" />
+			<canvas ref={canvasRef} className="w-full h-full"/>
 		</div>
 )
 }

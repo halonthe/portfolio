@@ -5,6 +5,7 @@ import Revealer from "@/components/animation/revealer";
 import {AboutMe} from "@/constants";
 import {FlipWords} from "@/components/animation/flip-word";
 import ParticleBackground from "@/components/animation/particle-background";
+import React from "react";
 
 export default function AboutPage(){
 
@@ -13,7 +14,7 @@ export default function AboutPage(){
 	return (
 		<>
 			<Revealer/>
-			<ParticleBackground/>
+			<ParticleBackground quantity={250}/>
 			<section className="w-full min-h-screen relative p-20 overflow-x-hidden">
 				<div className={"w-full flex flex-col xl:flex-row justify-between items-center gap-5 mt-40"}>
 					<div className={"flex flex-col text-7xl md:text-8xl font-extrabold pointer-events-none"}>
@@ -67,11 +68,12 @@ export default function AboutPage(){
 					</div>
 
 					<div className={"w-full xl:max-w-1/2 flex flex-col gap-10"}>
-						<p className={"text-3xl text-yellow-300 font-bold text-justify"}>{my.role}</p>
-						<div className={"flex w-full xl:w-3/4 justify-between gap-10"}>
-							<div className={"hidden lg:block"}>
-								<sup className={"font-mono text-yellow-300"}>02.</sup>ABOUT
-							</div>
+						<p className={"text-3xl font-bold text-justify"}>{my.role}</p>
+						<div className={"flex w-full justify-between gap-10"}>
+							<p className="hidden lg:block font-[family-name:var(--font-geist-mono)] text-yellow-300">
+								<sup className={"text-white"}>02.</sup>About_
+							</p>
+
 							<div className={"text-xl"}>
 								<p className={"mb-5"}>{my.vision}</p>
 								<p>{my.mission}</p>

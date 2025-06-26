@@ -25,9 +25,10 @@ const animate = {
 
 interface PixelBackground {
 	color?: string;
+	blocks?: number;
 }
 
-export default function PixelBackground({color = 'white'}: PixelBackground) {
+export default function PixelBackground({color = 'white', blocks = 20}: PixelBackground) {
 	const {isPixeled, setPixeled} = usePixelBgStore()
 
 	const ref = useRef<HTMLDivElement>(null);
@@ -91,7 +92,7 @@ export default function PixelBackground({color = 'white'}: PixelBackground) {
 	return (
 		<div ref={ref} className={"absolute top-0 left-0 w-screen h-screen flex overflow-hidden pointer-events-none z-50"}>
 			{ width !== 0 && height !== 0 &&
-				[...Array(20)].map((_, i) => (
+				[...Array(blocks)].map((_, i) => (
 					<div key={i} className={"w-[5vw]"}>
 						{
 							getBlocks()

@@ -19,8 +19,8 @@ export default async function ProjectDetailPage({params}: Props) {
 	return(
 		<>
 			<Revealer/>
-			<PixelBackground/>
-			<section className={"w-screen h-full flex flex-col items-center justify-center text-[#02DFB6] bg-[#040737] px-5"}>
+			<PixelBackground color={"#02DFB6"}/>
+			<section className={"w-screen h-full flex flex-col items-center justify-center text-[#02DFB6] bg-[#040737] px-5 z-30"}>
 
 				<div className={"w-full flex items-center justify-center border-b border-[#02DFB6]/30 mt-10 py-20"}>
 					<h1 className={"font-extrabold text-9xl uppercase"}>{project.name}</h1>
@@ -31,7 +31,7 @@ export default async function ProjectDetailPage({params}: Props) {
 						SOURCE CODE
 					</a>
 					<div className={''}>
-						<span className={"px-2 pointer-events-none bg-[#02DFB6] text-[#040737] font-bold rounded"}>{project.category}</span>
+						<span className={"px-2 pointer-events-none bg-[#02DFB6] text-[#040737] font-bold rounded"}>{project.type}</span>
 					</div>
 					<a href={project.link.preview} target={"_blank"}>
 						SEE IT LIVE

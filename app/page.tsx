@@ -2,7 +2,7 @@
 
 import useCursorStore from "@/lib/zustand/cursor";
 import Revealer from "@/components/animation/revealer";
-import {useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import {TextGenerateEffect} from "@/components/animation/text-generate-effect";
 import ParticleBackground from "@/components/animation/particle-background";
 
@@ -19,8 +19,8 @@ export default function Home() {
   return (
       <>
           <Revealer/>
-          <ParticleBackground/>
-            <section className="bg-cover bg-center min-h-screen">
+          <ParticleBackground quantity={250}/>
+            <section className="bg-cover bg-center w-screen h-screen">
                 <div className="absolute bottom-0 left-0 px-20 pb-40 w-full md:w-1/2">
                     <p className="font-[family-name:var(--font-geist-mono)] text-yellow-300"><sup>01.</sup> Hello_</p>
                     <div className="text-lg md:text-xl xl:text-2xl font-bold">

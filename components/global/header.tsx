@@ -17,7 +17,7 @@ export default function Header() {
 
 	useEffect(() => {
 		const checkMobile = () => {
-			setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+			setIsMobile(typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches);
 		};
 
 		checkMobile();
@@ -44,7 +44,7 @@ export default function Header() {
 		<header className="fixed top-0 left-0 flex items-center justify-between w-full bg-transparent p-10 md:px-20 z-40">
 			<h1 className="flex items-center justify-between">
 				<sup className="font-normal font-mono text-yellow-300">01.</sup>
-				<Link href="/" className="text-3xl font-bold relative inline-block after:block after:h-1 after:bg-blue-900 after:transition-transform after:duration-300 after:delay-150 after:scale-x-0 hover:after:scale-x-100 after:origin-left"
+				<Link href="/" className="text-3xl font-bold relative inline-block after:block after:h-1 after:bg-yellow-300 after:transition-transform after:duration-300 after:delay-150 after:scale-x-0 hover:after:scale-x-100 after:origin-left"
 					  onMouseEnter={() => setHovered(true)}
 					  onMouseLeave={() => setHovered(false)}
 					  onClick={handleNavigation("/")}
@@ -62,7 +62,7 @@ export default function Header() {
 							<Link
 								href={nav.link}
 								onClick={handleNavigation(nav.link)}
-								className={`text-md md:text-xl font-medium relative inline-block after:block after:h-1 after:bg-blue-900 after:transition-transform after:duration-300 after:delay-150 ${active ? "after:scale-x-100" : "after:scale-x-0"} hover:after:scale-x-100 after:origin-left`}
+								className={`text-md md:text-xl font-medium relative inline-block after:block after:h-1 after:bg-yellow-300 after:transition-transform after:duration-300 after:delay-150 ${active ? "after:scale-x-100" : "after:scale-x-0"} hover:after:scale-x-100 after:origin-left`}
 								  onMouseEnter={() => setHovered(true)}
 								  onMouseLeave={() => setHovered(false)}>
 								{nav.name}
